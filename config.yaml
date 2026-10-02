@@ -1,0 +1,65 @@
+data:
+  raw_file : "data/nq_100ms_data.parquet"
+  processed_dir : "data/processed"
+  results_dir : "results/"
+  plots_dir : "results/plots"
+  metrics_dir : "results/metrics"
+pipeline:
+  active_runs:
+    - har_5min_100_scaled
+    - har_1min_100_scaled
+    - har_3min_100_scaled
+    - figarch_5min_100_scaled
+experiments:
+  har_1min_100_scaled:
+    model_type: "HAR"
+    resample_freq: "1min"
+    return_scale: 100
+    train_batch_size: 1000
+    test_batch_size: 30
+    har_lags: [1, 12, 78]
+  
+  har_3min_100_scaled:
+    model_type: "HAR"
+    resample_freq: "3min"
+    return_scale: 100
+    train_batch_size: 333
+    test_batch_size: 10
+    har_lags: [1, 12, 78]
+
+  har_5min_100_scaled:
+    model_type: "HAR"
+    resample_freq: "5min"
+    return_scale: 100
+    train_batch_size: 200
+    test_batch_size: 6
+    har_lags: [1, 12, 78]
+
+  auto_garch_1min_100_scaled:
+    model_type: "AUTO_GARCH"
+    resample_freq: "1min"
+    return_scale: 100
+    train_batch_size: 1000
+    test_batch_size: 5
+  
+  figarch_5min_100_scaled:
+    model_type: "FIGARCH"
+    resample_freq: "5min"
+    return_scale: 100
+    train_batch_size: 200
+    test_batch_size: 6
+    use_log: False
+    p_list: [0,1,2, 3, 4]
+    q_list: [0,1,2, 3, 4]
+
+  figarch_1min_100_scaled:
+    model_type: "FIGARCH"
+    resample_freq: "1min"
+    return_scale: 100
+    train_batch_size: 1000
+    test_batch_size: 30
+    use_log: False
+    p_list: [0,1,2, 3, 4]
+    q_list: [0,1,2, 3, 4]
+
+

@@ -1,0 +1,16 @@
+.vscode/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+env/
+
+*.csv
+*.parquet
+
+results/
+*.png
+*.jpg
+*.log
+
+roadmap.txt
